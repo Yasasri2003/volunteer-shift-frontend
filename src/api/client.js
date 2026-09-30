@@ -4,7 +4,8 @@
 // It automatically attaches the JWT token (if the user is logged in)
 // and throws a readable error if the backend returns a non-2xx status.
 
-const BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://volunteer-shift-backend.onrender.com';
+const BASE_URL = `${API_BASE_URL}/api`;
 
 export async function apiRequest(path, { method = 'GET', body, token } = {}) {
   const headers = { 'Content-Type': 'application/json' };
